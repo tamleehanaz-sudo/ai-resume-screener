@@ -143,8 +143,8 @@ def dashboard():
     pass_score = st.sidebar.slider("Min Selection Score (%)", 0, 100, 50)
     skills_in = st.sidebar.text_area("Keywords (Skills to Search)", "Python, SQL, React")
     REQUIRED = [s.strip().lower() for s in skills_in.split(",") if s.strip()]
-
-    # Main Top Banner (Same as Image Logo Look)
+ 
+    #-----6 Main Top Banner (File Processing)
     st.markdown("""
         <div style='background: linear-gradient(135deg, #4b1248 0%, #f0c27b 100%); border-radius: 20px; padding: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 2px solid #fff; margin-bottom: 25px;'>
             <h1 style='color: white; margin: 0; font-size: 2.5rem; text-shadow: 3px 3px 6px rgba(0,0,0,0.4); float: left;'>👑 AI CANDIDATE SCREENER</h1>
@@ -183,7 +183,7 @@ def dashboard():
         if results:
             df = pd.DataFrame(results)
             
-            # KPI Counter Badge (Same as 42 RESUMES SCREENED badge in image)
+#-------7 KPI Counter Badge (Skills matching & Scoring)
             st.markdown(f"""
                 <div style='background: rgba(255,255,255,0.7); border-radius: 15px; padding: 15px; text-align: center; border-left: 5px solid #d63384; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);'>
                     <span style='font-size: 1.2rem; color: #555; font-weight: bold;'>TOTAL RESUMES PROCESSED: </span>
@@ -191,7 +191,7 @@ def dashboard():
                 </div>
             """, unsafe_allow_html=True)
 
-            # Visual 3D Styled Chart
+#-------8 Visual 3D Styled Chart(Data Display)
             fig = px.bar(df, x="Name", y="Score", color="Status", 
                          title="CANDIDATE SCORE OVERVIEW",
                          color_discrete_map={"✅ Selected": "#d63384", "❌ Rejected": "#ff9a9e"})
@@ -205,7 +205,7 @@ def dashboard():
             # Interactive Table
             st.dataframe(df, use_container_width=True)
 
-            # --- OUTREACH SECTION ---
+# ----9 OUTREACH SECTION --- (unique part of system)
             st.divider()
             st.markdown("<h3 style='color: #d63384;'>✉️ Fast Outreach Center</h3>", unsafe_allow_html=True)
             sel_name = st.selectbox("Choose Candidate", df["Name"].unique())
