@@ -18,7 +18,7 @@ def local_css():
     st.markdown("""
     <style>
     .stApp { 
-        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); 
+        background: linear-gradient(135deg, #ff9a9e 0%, #ff9a9e 100%); 
         color: #333333; 
     }
     div.stButton > button { 
